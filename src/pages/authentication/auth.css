@@ -1,0 +1,8 @@
+.auth-page {
+ max-width: 550px;
+ margin: 150px auto 80px;
+}
+.auth-page button {
+ display: block;
+ width: 100%;
+}

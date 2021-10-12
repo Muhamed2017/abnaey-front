@@ -1,11 +1,12 @@
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import 'antd/dist/antd.css';
 
+import Signup from './pages/authentication/Signup';
 function App() {
+  
   return (
-   <div id ="main">
-     <h2>Hello Fuckers !</h2>
-   </div>
+  <Signup/>
   );
 }
 
