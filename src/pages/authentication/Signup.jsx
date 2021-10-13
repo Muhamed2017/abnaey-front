@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./auth.css";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 import {
  formItemLayout,
  tailFormItemLayout,
@@ -24,10 +26,6 @@ class Signup extends Component {
    password: "",
   };
  }
-
- onFormLayoutChange = ({ size }) => {
-  this.setState({ componentSize: size });
- };
 
  onFinish = (values) => {
   console.log(values);
@@ -77,8 +75,14 @@ class Signup extends Component {
 
       <Form.Item {...tailFormItemLayout}>
        <Button type="primary" htmlType="submit">
-        تسجيل
-        {this.props.loading ? <>جاري التسجيل</> : ""}
+        {this.props.loading ? (
+         <>
+          <LoadingOutlined style={{ fontSize: 18 }} spin />
+          جاري التسجيل
+         </>
+        ) : (
+         <>تسجيل</>
+        )}
        </Button>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
