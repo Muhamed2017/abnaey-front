@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { ConfigProvider } from 'antd';
+import { Provider } from 'react-redux';
+import configureStore from './redux/reducers/store';
+const store = configureStore();
 
 ReactDOM.render(
-  <ConfigProvider direction="rtl">
+  <Provider store={store}>
     <App />
-  </ConfigProvider>,
+  </Provider>,
   document.getElementById('root')
 );
 

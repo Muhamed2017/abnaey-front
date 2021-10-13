@@ -7,6 +7,12 @@ import {
  password_rules,
  confirm_password_rules,
 } from "../layout";
+import {
+ signupEmailPassword,
+ signupGoogle,
+ signupFacebook,
+} from "./../../redux/actions/authAction";
+import { connect } from "react-redux";
 import { Form, Input, Button } from "antd";
 
 class Signup extends Component {
@@ -25,6 +31,11 @@ class Signup extends Component {
 
  onFinish = (values) => {
   console.log(values);
+  this.props.dispatchRegularSignup(
+   values.fullName,
+   values.email,
+   values.password
+  );
  };
  render() {
   return (
@@ -67,16 +78,21 @@ class Signup extends Component {
       <Form.Item {...tailFormItemLayout}>
        <Button type="primary" htmlType="submit">
         تسجيل
+        {this.props.loading ? <>جاري التسجيل</> : ""}
        </Button>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
        <Button>متابعه عن طريق تويتر</Button>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
-       <Button>متابعه عن طريق جوجل</Button>
+       <Button onClick={this.props.dispatchGoogleSignup}>
+        متابعه عن طريق جوجل
+       </Button>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
-       <Button>متابعه عن طريق فيسبوك</Button>
+       <Button onClick={this.props.dispatchFacebookSignup}>
+        متابعه عن طريق فيسبوك
+       </Button>
       </Form.Item>
      </Form>
     </div>
@@ -84,5 +100,16 @@ class Signup extends Component {
   );
  }
 }
-
-export default Signup;
+const mapDispatchToProps = (dispatch) => ({
+ dispatchRegularSignup: (fullName, email, password) =>
+  dispatch(signupEmailPassword(fullName, email, password)),
+ dispatchGoogleSignup: () => dispatch(signupGoogle()),
+ dispatchFacebookSignup: () => dispatch(signupFacebook()),
+});
+const mapStateToProps = (state) => {
+ return {
+  user: state.regularUser.user,
+  loading: state.regularUser.loading,
+ };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
