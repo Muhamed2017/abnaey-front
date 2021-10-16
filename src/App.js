@@ -7,6 +7,7 @@ import Signup from './pages/authentication/Signup';
 import Navigation from './components/Navigation';
 import { connect } from 'react-redux';
 import Home from './pages/Home';
+import Signin from './pages/authentication/Signin';
 class App extends Component {
   constructor(props) {
     super(props)
@@ -16,11 +17,14 @@ class App extends Component {
 render(){  
   return (
       <ConfigProvider direction="rtl">
-        <Navigation/>
+        {/* <Navigation/> */}
       <Router>
         <Switch>
           <Route path="/signup" exact>
             {this.props.isLoggedIn ? <Redirect to="/" /> : <Signup />}
+          </Route>
+          <Route path="/signin" exact>
+            {this.props.isLoggedIn ? <Redirect to="/" /> : <Signin />}
           </Route>
           <Route path="/" exact component={Home}/>
           </Switch>

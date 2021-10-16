@@ -13,6 +13,10 @@ export const emailPasswordSignupSuccess = user => ({
     type: actions.SIGNUP_EMAIL_PASSWORD_SUCCESS,
     payload: user
 })
+export const emailPasswordSigninSuccess = user => ({
+    type: actions.SIGNIN_EMAIL_PASSWORD_SUCCESS,
+    payload: user
+})
 export const googleSignup = () => ({
     type: actions.GOOGLE_SIGNUP_REQUEST,
 })
@@ -29,6 +33,8 @@ export const logout = () => {
         type: actions.LOGOUT
     }
 }
+
+//firebase signup email and password
 export const signupEmailPassword = (fullName, email, password) => {
     return (dispatch) => {
         dispatch(emailPasswordSignup());
@@ -43,6 +49,19 @@ export const signupEmailPassword = (fullName, email, password) => {
                     saveUserInLocalStorage(user);
                 })
             })
+    }
+}
+
+export const signinEmailPassword = (email, password)=>{
+    return (dispatch) => {
+        dispatch(emailPasswordSignin());
+        auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
+                const { uid, displayName, email, photoURL, phoneNumber, emailVerified } = userCredential.user
+
+                dispatch(emailPasswordSigninSuccess({ uid, displayName, email, photoURL, phoneNumber, emailVerified }))
+                const user = { uid, displayName, email, photoURL, phoneNumber, emailVerified }
+                saveUserInLocalStorage(user);
+        })
     }
 }
 export const signupGoogle = () => {

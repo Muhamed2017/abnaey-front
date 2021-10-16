@@ -34,10 +34,7 @@ class Navigation extends Component {
        ) : (
         <>
          <Menu.Item key={"2"} style={{ background: "transparent" }}>
-          <Avatar
-           src={this.props.user.photoURL ?? ""}
-           //    style={{ backgroundColor: "#000" }}
-          />
+          <Avatar src={this.props.user.photoURL ?? ""} />
          </Menu.Item>
          <Menu.Item key={"3"} style={{ background: "transparent" }}>
           {this.props.user.displayName}

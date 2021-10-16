@@ -3,7 +3,25 @@
 * {
  font-family: "Cairo", sans-serif;
 }
+a,
+a:hover {
+ text-decoration: none;
+ color: transparent;
+}
+#home-page {
+ min-height: 100vh;
+ /* max-width: 80vw; */
+ margin: auto;
+}
+#components-layout-demo-side .logo {
+ height: 32px;
+ margin: 16px;
+ background: rgba(255, 255, 255, 0.3);
+}
 
-#root {
- /* background: #f8f8f8; */
+.site-layout .site-layout-background {
+ background: #fff;
+}
+.side-nav {
+ padding: 50px 0 !important;
 }

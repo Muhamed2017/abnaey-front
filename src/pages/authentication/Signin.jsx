@@ -10,18 +10,17 @@ import {
  confirm_password_rules,
 } from "../layout";
 import {
- signupEmailPassword,
  signupGoogle,
  signupFacebook,
+ signinEmailPassword,
 } from "./../../redux/actions/authAction";
 import { connect } from "react-redux";
 import { Form, Input, Button } from "antd";
 
-class Signup extends Component {
+class Signin extends Component {
  constructor(props) {
   super(props);
   this.state = {
-   FullName: "",
    email: "",
    password: "",
   };
@@ -29,47 +28,22 @@ class Signup extends Component {
 
  onFinish = (values) => {
   console.log(values);
-  this.props.dispatchRegularSignup(
-   values.fullName,
-   values.email,
-   values.password
-  );
+  this.props.dispatchRegularSignin(values.email, values.password);
  };
  render() {
   return (
    <>
-    <div className="auth-page signup">
+    <div className="auth-page signin">
      <Form
       size="large"
       onFinish={this.onFinish}
       {...formItemLayout}
-      name="signup"
+      name="signin"
      >
-      <Form.Item
-       label="الاسم بالكامل"
-       name="fullName"
-       rules={[{ required: true, message: "من فضلك ادخل اسمك رباعيا" }]}
-      >
+      <Form.Item name="email" label="البريد الالكتروني">
        <Input />
       </Form.Item>
-      <Form.Item name="email" label="البريد الالكتروني" rules={email_rules}>
-       <Input />
-      </Form.Item>
-      <Form.Item
-       label="كلمه المرور"
-       name="password"
-       rules={password_rules}
-       hasFeedback
-      >
-       <Input.Password />
-      </Form.Item>
-      <Form.Item
-       name="password_confirm"
-       label="تأكيد كلمه المرور"
-       dependencies={["password"]}
-       hasFeedback
-       rules={confirm_password_rules}
-      >
+      <Form.Item label="كلمه المرور" name="password">
        <Input.Password />
       </Form.Item>
 
@@ -77,11 +51,10 @@ class Signup extends Component {
        <Button type="primary" htmlType="submit">
         {this.props.loading ? (
          <>
-          جاري التسجيل
-          <LoadingOutlined style={{ fontSize: 18, padding: "0 10px" }} spin />
+          <LoadingOutlined style={{ fontSize: 18, padding: "0 3px" }} spin />
          </>
         ) : (
-         <>تسجيل</>
+         <>متابعة</>
         )}
        </Button>
       </Form.Item>
@@ -105,8 +78,8 @@ class Signup extends Component {
  }
 }
 const mapDispatchToProps = (dispatch) => ({
- dispatchRegularSignup: (fullName, email, password) =>
-  dispatch(signupEmailPassword(fullName, email, password)),
+ dispatchRegularSignin: (email, password) =>
+  dispatch(signinEmailPassword(email, password)),
  dispatchGoogleSignup: () => dispatch(signupGoogle()),
  dispatchFacebookSignup: () => dispatch(signupFacebook()),
 });
@@ -116,4 +89,4 @@ const mapStateToProps = (state) => {
   loading: state.regularUser.loading,
  };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
