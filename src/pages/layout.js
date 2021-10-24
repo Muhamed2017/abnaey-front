@@ -29,11 +29,11 @@ export const tailFormItemLayout = {
 export const email_rules= [
         {
             type: 'email',
-            message: 'The input is not valid E-mail!',
+            message: 'هذا البريد غير صالح ',
         },
         {
             required: true,
-            message: 'Please input your E-mail!',
+            message: 'من فضلك أدخل بريدك الالكتروني',
         },
         ]
 
@@ -41,15 +41,15 @@ export const email_rules= [
 export const password_rules= [
                 {
                     required: true,
-                    message: 'Please input your password!',
+                    message: 'من فضلك ادخل كلمة مرور',
                 },
-    ({ getFieldValue }) => ({
+    () => ({
         validator(_, value) {
             if(value.length>6){
                     return Promise.resolve();
             }else{
                  return Promise.reject(
-                            new Error("too Short ")
+                            new Error("كلمة مرور قصيره")
                         );
             }
         },
@@ -60,7 +60,7 @@ export const password_rules= [
                 [
                 {
                     required: true,
-                    message: "Please confirm your password!",
+                        message: "من فضلك قم بتأكيد كلمة المرور",
                 },
                 ({ getFieldValue }) => ({
                     validator(_, value) {
@@ -68,7 +68,7 @@ export const password_rules= [
                             return Promise.resolve();
                         }
                         return Promise.reject(
-                            new Error("The two passwords that you entered do not match!")
+                            new Error("كلمة مرور غير متطابقه")
                         );
                     },
                 }),

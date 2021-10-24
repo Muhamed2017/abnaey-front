@@ -7,6 +7,7 @@ import Signup from './pages/authentication/Signup';
 import Navigation from './components/Navigation';
 import { connect } from 'react-redux';
 import Home from './pages/Home';
+import Application from './pages/Application';
 import Signin from './pages/authentication/Signin';
 class App extends Component {
   constructor(props) {
@@ -20,13 +21,16 @@ render(){
         {/* <Navigation/> */}
       <Router>
         <Switch>
+          <Route path="/" exact component={Home} />
           <Route path="/signup" exact>
             {this.props.isLoggedIn ? <Redirect to="/" /> : <Signup />}
           </Route>
           <Route path="/signin" exact>
             {this.props.isLoggedIn ? <Redirect to="/" /> : <Signin />}
           </Route>
-          <Route path="/" exact component={Home}/>
+          <Route path="/application" exact>
+            {this.props.isLoggedIn ? <Application /> : <Redirect to="/signin" />}
+      </Route>
           </Switch>
           </Router>
   </ConfigProvider>

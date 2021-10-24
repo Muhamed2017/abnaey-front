@@ -45,7 +45,9 @@ class Home extends React.Component {
 
       <Menu.Item key="10" icon={<FileOutlined />}>
        {this.props.isLoggedIn ? (
-        <>تقديم طلب</>
+        <>
+         <a href="/application">تقديم طلب</a>
+        </>
        ) : (
         <>
          <a href="/signup">انشاء حساب</a>
