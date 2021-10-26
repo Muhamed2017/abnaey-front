@@ -23,25 +23,113 @@ class Application extends Component {
    loading: false,
   };
  }
- //  onFinish = (values) => {
- //   const fd = { ...values, uid: this.props.user.uid };
- //   // console.log(fd);
- //   this.setState({ loading: true });
- //   axios
- //    .post("http://localhost:8000/api/applications/add", fd)
- //    .then((response) => {
- //     console.log(response);
- //     this.next();
- //     // this.setState({ status: "finish", loading: false });
- //    })
- //    .catch((error) => console.log(error));
+ onFinish = (values) => {
+  const fd = { ...values, uid: this.props.user.uid };
+  // console.log(fd);
+  this.setState({ loading: true });
+  axios
+   .post("http://localhost:8000/api/applications/add", fd)
+   .then((response) => {
+    console.log(response);
+    this.next();
+    // this.setState({ status: "finish", loading: false });
+   })
+   .catch((error) => console.log(error));
 
- //   this.setState({ status: "finish", loading: false });
- //  };
+  this.setState({ status: "finish", loading: false });
+ };
  steps = [
   {
    title: "معلومات ولي الامر والطالب",
-   content: <ApplicationForm />,
+   content: (
+    <>
+     <Form
+      size="large"
+      onFinish={this.onFinish}
+      {...formItemLayout}
+      name="apply-for-son"
+     >
+      <Form.Item
+       label="اسم ولي الامر رباعيا"
+       name="parent_full_name"
+       initialValue={this.props.user.displayName}
+       rules={[{ required: true, message: "من فضلك ادخل الاسم رباعيا" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       name="student_full_name"
+       label="اسم الطالب رباعيا"
+       rules={[{ required: true, message: "من فضلك ادخل اسم الطالب رباعيا" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       label="الجنسيه"
+       name="nationality"
+       rules={[{ required: true, message: "من فضلك ادخل جنسيه الطالب" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       label="تاريخ ميلاد الطالب"
+       name="student_date_of_birth"
+       rules={[{ required: true, message: "من فضلك ادخل تاريخ ميلاد الطالب" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       label="السنة الدراسيه"
+       name="applicant_year"
+       rules={[{ required: true, message: "من فضلك ادخل السنة الدراسيه" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       label="الجوال"
+       name="phone"
+       rules={[{ required: true, message: "من فضلك ادخل رقم جوالك" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       name="parent_sgl_madany"
+       label="السجل المدني لولي الأمر"
+       rules={[
+        { required: true, message: "من فضلك ادخل السجل المدني لولي الأمر" },
+       ]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       name="desease"
+       label="هل يشكو الطالب من امراض"
+       rules={[{ required: true, message: "من فضلك اجب عن هذا السوال" }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item
+       name="full_address"
+       label="عنوان السكن بالتفصيل"
+       rules={[{ required: true, message: "من فضلك ادخل عنوان السكن " }]}
+      >
+       <Input />
+      </Form.Item>
+      <Form.Item {...tailFormItemLayout}>
+       <Button type="primary" htmlType="submit">
+        {this.state.loading ? (
+         <>
+          جاري التقديم
+          <LoadingOutlined style={{ fontSize: 18, padding: "0 10px" }} spin />
+         </>
+        ) : (
+         <>تسجيل</>
+        )}
+       </Button>
+      </Form.Item>
+     </Form>
+    </>
+   ),
    icon: <UserOutlined />,
   },
   {

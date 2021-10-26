@@ -18,7 +18,7 @@ class ApplicationForm extends Component {
    .post("http://localhost:8000/api/applications/add", fd)
    .then((response) => {
     console.log(response);
-    this.next();
+    // this.next();
     this.setState({ loading: false });
    })
    .catch((error) => console.log(error));
