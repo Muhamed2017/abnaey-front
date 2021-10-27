@@ -4,7 +4,7 @@ import { Form, Input, Steps, Button, Modal, message, Radio } from "antd";
 import axios from "axios";
 import { LoadingOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
-
+import { Spinner } from "react-bootstrap";
 class ApplicationStepTwo extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +17,7 @@ class ApplicationStepTwo extends Component {
   componentDidMount() {}
 
   onFinish = (values) => {
+    this.setState({ loading: true });
     const fd = { interview_id: this.props.app.interview.id };
     const next = this.props.next;
     axios
@@ -56,6 +57,7 @@ class ApplicationStepTwo extends Component {
         </Radio.Group>
         <Button style={{ margin: "0 8px" }} onClick={() => this.onFinish()}>
           اختر
+          {this.state.loading? <Spinner></Spinner>:""}
         </Button>
       </>
     );

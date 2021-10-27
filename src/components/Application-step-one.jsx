@@ -24,8 +24,10 @@ class ApplicationForm extends Component {
         Modal.success({
           title: "تم بنجاح",
           content: <p>تم ارسال طلبك بنجاح!</p>,
+          okText:"تم",
           onOk() {
-            next();
+            window.location = "/application?data="+JSON.stringify(response.data.application)
+            // next();
           },
         });
       })

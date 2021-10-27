@@ -212,13 +212,17 @@ class Home extends React.Component {
               )}
               <div className="row mt-5">
                 <p>عنوان ابنائي</p>
-                {applications.map((app, i) => (
-                  <div className="col">
-                    <a href={`/application?data=${JSON.stringify(app)}`}>
-                      App {i + 1}
-                    </a>
-                  </div>
-                ))}
+                {applications.length ? (
+                  applications.map((app, i) => (
+                    <div className="col">
+                      <a href={`/application?data=${JSON.stringify(app)}`}>
+                        App {i + 1}
+                      </a>
+                    </div>
+                  ))
+                ) : (
+                  <p style={{ color: "gray" }}>لا يوجد اي طلبات خاصه بك</p>
+                )}
               </div>
             </div>
           </Content>
