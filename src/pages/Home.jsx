@@ -11,6 +11,11 @@ import {
 import { connect } from "react-redux";
 import { logginOut } from "../redux/actions/authAction";
 import axios from "axios";
+import "./home.scss";
+import BackgroundImge from "./authentication/bkground.png";
+import chairImg from "./authentication/chair.png";
+import arrow from "./authentication/arrow.png";
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 class Home extends React.Component {
@@ -47,6 +52,104 @@ class Home extends React.Component {
   }
   render() {
     const { collapsed, applications } = this.state;
+
+    return (
+      <>
+        <nav class="navbar navbar-expand-lg">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  تسجيل طالب
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  تسجيل طالب
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  تسجيل طالب
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  تسجيل طالب
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  تسجيل طالب
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {/* <div className="image-wrapper">
+        <img className="background-img" src={BackgroundImge}/>
+        </div> */}
+        <div className="container-fluid" style={{height:'100vh'}}>
+          <div className="row h-100" >
+            <div className="col-8">
+              <div className="row flex-column">
+                <div className="col">search</div>
+
+                <div className="col bottom-half">
+                  <div className="row flex-column">
+                    <div className="col">
+                      <p className="title">الرئيسية</p>
+                    </div>
+                    <div className="col">
+                      <div className="grid">
+                        {/* <img className="" src={arrow} /> */}
+                        <div
+                          className="card"
+                          style={{ backgroundImage: `url(${chairImg})` }}
+                        ></div>
+                        <div
+                          className="card"
+                          style={{ backgroundImage: `url(${chairImg})` }}
+                        ></div>
+                        <div
+                          className="card"
+                          style={{ backgroundImage: `url(${chairImg})` }}
+                        ></div>
+                        <div
+                          className="card"
+                          style={{ backgroundImage: `url(${chairImg})` }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-4">
+              <div className="row">
+                <div className="side-column">
+                  <div className="row flex-column">
+                    <p>عن ابنائي</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
     return (
       <Layout id="home-page">
         <Sider
@@ -111,7 +214,9 @@ class Home extends React.Component {
                 <p>عنوان ابنائي</p>
                 {applications.map((app, i) => (
                   <div className="col">
-                    <a href={`/application?data=${JSON.stringify(app)}`}>App {i+1}</a>
+                    <a href={`/application?data=${JSON.stringify(app)}`}>
+                      App {i + 1}
+                    </a>
                   </div>
                 ))}
               </div>
