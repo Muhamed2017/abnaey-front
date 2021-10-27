@@ -61,6 +61,8 @@ export const signinEmailPassword = (email, password)=>{
                 dispatch(emailPasswordSigninSuccess({ uid, displayName, email, photoURL, phoneNumber, emailVerified }))
                 const user = { uid, displayName, email, photoURL, phoneNumber, emailVerified }
                 saveUserInLocalStorage(user);
+        }).catch(e=>{
+            console.error(e)
         })
     }
 }

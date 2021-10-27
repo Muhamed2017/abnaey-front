@@ -1,0 +1,123 @@
+/* 
+.auth-page {
+ max-width: 550px;
+ margin: 50px auto 80px;
+}
+.auth-page button {
+ display: block;
+ width: 100%;
+}
+
+.ant-form label {
+ font-size: 1.1rem;
+} */
+html {
+  direction: rtl;
+}
+.wrapper {
+  height: 100vh;
+
+  .floating {
+    background-color: white;
+    height: 900px;
+    max-height: 900px;
+    .right {
+      height: inherit;
+      padding-right: 5%;
+      .text-wrapper {
+        h1 {
+          color: white;
+          font-weight: bold;
+          font-size: 40px;
+        }
+        p {
+          color: white;
+          font-weight: lighter;
+          font-size: 20px;
+        }
+        .signup-request {
+          p {
+            color: #00a3e0;
+            font-size: 14px;
+          }
+          a {
+            max-width: 300px;
+            height: 66px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            border: 3px solid #00a3e0;
+            border-radius: 24px;
+            box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+            -webkit-box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+            -moz-box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+          }
+        }
+      }
+    }
+
+    .left {
+      height: inherit;
+
+      padding-left: 30px;
+      padding-top: 30px;
+      padding-right: 0px;
+
+      .arrow {
+        float: left;
+        cursor: pointer;
+      }
+      .logo {
+        align-self: center;
+      }
+      .form-title {
+        font-weight: bold;
+        font-size: 27px;
+        color: #00a3e0;
+        text-align: center;
+      }
+
+      form {
+        .inner {
+          flex-direction: column;
+          align-items: center;
+        }
+        input {
+          max-width: 350px;
+          height: 78px;
+          box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+          -webkit-box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+          -moz-box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+          background-color: white;
+          border: none;
+          &::placeholder {
+            color: #00a3e0;
+            text-align: right;
+          }
+          margin-bottom: 1%;
+        }
+        button {
+          max-width: 300px;
+          background-color: #00a3e0;
+          border: none;
+          border-radius: 24px;
+          color: white;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+
+          box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+          -webkit-box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+          -moz-box-shadow: 8px 7px 6px -7px rgba(0, 163, 224, 0.37);
+        }
+        .icons-list {
+          img {
+            cursor: pointer;
+            width: 39px;
+          }
+        }
+      }
+    }
+  }
+}
